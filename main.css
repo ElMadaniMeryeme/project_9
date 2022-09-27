@@ -1,0 +1,155 @@
+:root {
+  --main-color: rgb(255 255 255 / 80%);
+}
+* {
+  box-sizing: border-box;
+}
+body {
+  font-family: Arial, Helvetica, sans-serif;
+  background-color: #333;
+}
+
+p {
+  color: var(--main-color);
+  font-size: 30px;
+  width: 26ch; /* You Can Use 28ch*/
+  margin: 30px auto;
+  border-right: 2px solid var(--main-color);
+  overflow: hidden;
+  white-space: nowrap;
+  animation: control-width 3s steps(28) 2s both, blink 0.5s infinite;
+}
+@keyframes control-width {
+  from {
+    width: 0;
+  }
+  to {
+    width: 26ch;
+  }
+}
+@keyframes blink  {
+  from {
+    border-right-color: var(--main-color);
+  }
+  to {
+    border-right-color: transparent;
+  }
+}
+div {
+  width: 300px;
+  margin: 20px auto;
+}
+input {
+  padding: 15px;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid #d7d7d7;
+  background-color: #fbfbfb;
+}
+input:focus {
+  outline: none;
+}
+.progress {
+  background-color: #2196f3;
+  height: 2px;
+  width: 0;
+  display: block;
+  position: relative;
+  top: -2px;
+  transition: 0.5s;
+}
+.count {
+  display: block;
+  text-align: right;
+  font-size: 12px;
+  padding: 5px;
+}
+.zero {
+  font-weight: bold;
+  color: red;
+}
+.box{
+  margin: 40px auto;
+  width: 300px;
+  height: 300px;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.box:before {
+  width: 4px;
+  height: 100%;
+  left: 50%;
+  margin-left: -2px;
+}
+.box:after {
+  height: 4px;
+  width: 100%;
+  top: 50%;
+  margin-top: -2px;
+}
+.box:before,
+.box:after {
+  content: "";
+  background-color: #ddd;
+  position: absolute;
+}
+.box:hover button{
+  box-shadow: 0 0 0 130px #eee;
+}
+button {
+  background-color: #eee;
+  margin: 5px auto;
+  padding: 10px 20px;
+  display: block;
+  font-size: 20px;
+  border: none;
+  position: relative;
+  cursor: pointer;
+  overflow: hidden;
+  border-radius: 10px;
+  z-index: 2;
+  transition: 0.5s;
+}
+button:focus {
+  outline: none;
+}
+button span {
+  background-color: #333;
+  color: #fff;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 18px;
+  min-width: 240px;
+  padding: 10px 15px;
+  top: -60px;
+  transition: 0.5s;
+}
+button span:before {
+  content: "";
+  position: absolute;
+  bottom: -20px;
+  left: 50%;
+  transform: translateX(-50%);
+  border-style: solid;
+  border-width: 10px;
+  border-color: #333 transparent transparent;
+}
+button:hover {
+  overflow: visible;
+
+}
+button:hover span {
+  opacity: 1;
+}
+[data-position="bottom"] span {
+  top: auto;
+  bottom: -60px;
+}
+[data-position="bottom"] span:before {
+  bottom: auto;
+  top: -20px;
+  border-color: transparent transparent #333;
+}
